@@ -12,6 +12,7 @@
 
     <div class="card">
         <div class="card-body">
+            <a href="<?= base_url('RoomType/tambah') ?>" type="button" class="btn btn-primary float-end mt-3">Tambah</a>
             <h5 class="card-title"><?= $judul ?> </h5>
 
             <!-- Bordered Table -->
@@ -33,7 +34,10 @@
                             <th scope="row"><?= $no++ ?></th>
                             <td><?= $tipe['type'] ?></td>
                             <td><?= $tipe['deskripsi'] ?></td>
-                            <td>Edit | Delete</td>
+                            <td width="15%">
+                                <a href="<?= base_url('RoomType/edit/' . $tipe['id']) ?>" type="button" class="btn btn-info"><i class="bi bi-pencil-square"></i></a>
+                                <a href="<?= base_url('RoomType/delete/' . $tipe['id']) ?>" type="button" class="btn btn-danger"><i class="bi bi-x-square"></i></a>
+                            </td>
                         </tr>
                     <?php } ?>
 
