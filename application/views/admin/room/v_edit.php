@@ -15,10 +15,17 @@
 
             <h5 class="card-title"><?= $judul ?> </h5>
 
-            <form action="<?= base_url('RoomType/update/' . $kamar_id['id']) ?>" method="post" class="row g-3 needs-validation" novalidate>
+            <form action="<?= base_url('Room/update/' . $kamar_id['id']) ?>" method="post" class="row g-3 needs-validation" novalidate>
+                <div class="col-md-12 position-relative">
+                    <label for="validationTooltip01" class="form-label">Kamar</label>
+                    <input type="text" name="room" class="form-control" value="<?= $kamar_id['room'] ?>" id="validationTooltip01" required>
+                    <div class="valid-tooltip">
+                        Looks good!
+                    </div>
+                </div>
                 <div class="col-md-12 position-relative">
                     <label for="validationTooltip01" class="form-label">Tipe Kamar</label>
-                    <input type="text" name="type" class="form-control" value="<?= $kamar_id['type'] ?>" id="validationTooltip01" required>
+                    <input type="text" name="id_type" class="form-control" value="<?= $kamar_id['id_type'] ?>" id="validationTooltip01" required>
                     <div class="valid-tooltip">
                         Looks good!
                     </div>
