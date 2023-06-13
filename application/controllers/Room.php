@@ -7,12 +7,13 @@ class Room extends CI_Controller
     {
         parent::__construct();
         $this->load->model('m_room');
+        $this->load->model('m_room_type');
     }
 
     public function index()
     {
         $data = [
-            'judul' => "Halaman Tipe Ruangan",
+            'judul' => "Halaman Ruangan",
             'isi' => 'admin/room/v_index',
             'kamar' => $this->m_room->get_allData(),
         ];
@@ -22,8 +23,9 @@ class Room extends CI_Controller
     public function tambah()
     {
         $data = [
-            'judul' => "Tambah Tipe Ruangan",
+            'judul' => "Tambah Ruangan",
             'isi' => 'admin/room/v_tambah',
+            'tipe_kamar' => $this->m_room_type->get_allData(),
         ];
         $this->load->view('admin/layout/all', $data);
     }
@@ -33,7 +35,7 @@ class Room extends CI_Controller
         $data = [
             'room' => $this->input->post('room'),
             'id_type' => $this->input->post('id_type'),
-            'deskripsi' => $this->input->post('deskripsi'),
+            'room_desc' => $this->input->post('room_desc'),
         ];
         $this->m_room->insert_data($data);
         redirect('room');
@@ -42,9 +44,10 @@ class Room extends CI_Controller
     public function edit($id)
     {
         $data = [
-            'judul' => "Edit Tipe Ruangan",
+            'judul' => "Edit Ruangan",
             'isi' => 'admin/room/v_edit',
-            'kamar_id' => $this->m_room->get_data_by_id($id)
+            'kamar_id' => $this->m_room->get_data_by_id($id),
+            'type' => $this->m_room_type->get_allData(),
         ];
         $this->load->view('admin/layout/all', $data);
     }
@@ -54,7 +57,7 @@ class Room extends CI_Controller
         $data = [
             'room' => $this->input->post('room'),
             'id_type' => $this->input->post('id_type'),
-            'deskripsi' => $this->input->post('deskripsi'),
+            'room_desc' => $this->input->post('room_desc'),
         ];
         $this->m_room->update_data($id, $data);
         redirect('room');

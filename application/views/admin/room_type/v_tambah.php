@@ -25,7 +25,7 @@
                 </div>
                 <div class="col-md-12 position-relative">
                     <label for="validationTooltip02" class="form-label">Deskripsi</label>
-                    <input type="text" name="deskripsi" class="form-control" id="validationTooltip02" required>
+                    <input type="text" name="type_desc" class="form-control" id="validationTooltip02" required>
                     <div class="valid-tooltip">
                         Looks good!
                     </div>

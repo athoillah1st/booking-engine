@@ -23,16 +23,22 @@
                         Looks good!
                     </div>
                 </div>
+
                 <div class="col-md-12 position-relative">
-                    <label for="validationTooltip01" class="form-label">Tipe Kamar</label>
-                    <input type="text" name="id_type" class="form-control" id="validationTooltip01" required>
-                    <div class="valid-tooltip">
-                        Looks good!
+                    <label class="col-sm-2 col-form-label">Tipe Kamar</label>
+                    <div class="col-sm-10">
+                        <select name="id_type" class="form-select" aria-label="Default select example">
+                            <option selected>-- Pilih Tipe Kamar --</option>
+                            <?php foreach ($tipe_kamar as $key => $tipe) { ?>
+                                <option value="<?= $tipe['id_type'] ?>"><?= $tipe['type'] ?></option>
+                            <?php } ?>
+
+                        </select>
                     </div>
                 </div>
                 <div class="col-md-12 position-relative">
                     <label for="validationTooltip02" class="form-label">Deskripsi</label>
-                    <input type="text" name="deskripsi" class="form-control" id="validationTooltip02" required>
+                    <input type="text" name="room_desc" class="form-control" id="validationTooltip02" required>
                     <div class="valid-tooltip">
                         Looks good!
                     </div>

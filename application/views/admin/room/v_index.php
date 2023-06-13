@@ -34,11 +34,11 @@
                         <tr>
                             <th scope="row"><?= $no++ ?></th>
                             <td><?= $kmr['room'] ?></td>
-                            <td><?= $kmr['id_type'] ?></td>
-                            <td><?= $kmr['deskripsi'] ?></td>
+                            <td><?= $kmr['type'] ?></td>
+                            <td><?= $kmr['room_desc'] ?></td>
                             <td width="15%">
-                                <a href="<?= base_url('Room/edit/' . $kmr['id']) ?>" type="button" class="btn btn-info"><i class="bi bi-pencil-square"></i></a>
-                                <a href="<?= base_url('Room/delete/' . $kmr['id']) ?>" type="button" class="btn btn-danger"><i class="bi bi-x-square"></i></a>
+                                <a href="<?= base_url('Room/edit/' . $kmr['id_room']) ?>" type="button" class="btn btn-info"><i class="bi bi-pencil-square"></i></a>
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#basicModal<?= $kmr['id_room'] ?>"><i class="bi bi-x-square"></i></button>
                             </td>
                         </tr>
                     <?php } ?>
@@ -51,3 +51,25 @@
     </div>
 
 </main>
+
+
+<?php foreach ($kamar as $key => $value) { ?>
+
+    <div class="modal fade" id="basicModal<?= $value['id_room'] ?>" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Hapus Data</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Apakah Anda Yakin akan menghapus data <strong><?= $value['room'] ?> ??</strong>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <a href="<?= base_url('Room/delete/' . $value['id_room']) ?>" type="button" class="btn btn-danger">Hapus</a>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php } ?>

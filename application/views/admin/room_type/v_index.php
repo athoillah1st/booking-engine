@@ -33,10 +33,10 @@
                         <tr>
                             <th scope="row"><?= $no++ ?></th>
                             <td><?= $tipe['type'] ?></td>
-                            <td><?= $tipe['deskripsi'] ?></td>
+                            <td><?= $tipe['type_desc'] ?></td>
                             <td width="15%">
-                                <a href="<?= base_url('RoomType/edit/' . $tipe['id']) ?>" type="button" class="btn btn-info"><i class="bi bi-pencil-square"></i></a>
-                                <a href="<?= base_url('RoomType/delete/' . $tipe['id']) ?>" type="button" class="btn btn-danger"><i class="bi bi-x-square"></i></a>
+                                <a href="<?= base_url('RoomType/edit/' . $tipe['id_type']) ?>" type="button" class="btn btn-info"><i class="bi bi-pencil-square"></i></a>
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#basicModal<?= $tipe['id_type'] ?>"><i class="bi bi-x-square"></i></button>
                             </td>
                         </tr>
                     <?php } ?>
@@ -49,3 +49,24 @@
     </div>
 
 </main>
+
+<?php foreach ($tipe_kamar as $key => $value) { ?>
+
+    <div class="modal fade" id="basicModal<?= $value['id_type'] ?>" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Hapus Data</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Apakah Anda Yakin akan menghapus data <strong><?= $value['type'] ?> ??</strong>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <a href="<?= base_url('RoomType/delete/' . $value['id_type']) ?>" type="button" class="btn btn-danger">Hapus</a>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php } ?>

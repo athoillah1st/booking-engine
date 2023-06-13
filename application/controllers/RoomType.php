@@ -6,7 +6,7 @@ class RoomType extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('m_RoomType');
+        $this->load->model('m_room_type');
     }
 
     public function index()
@@ -14,7 +14,7 @@ class RoomType extends CI_Controller
         $data = [
             'judul' => "Halaman Tipe Ruangan",
             'isi' => 'admin/room_type/v_index',
-            'tipe_kamar' => $this->m_RoomType->get_allData(),
+            'tipe_kamar' => $this->m_room_type->get_allData(),
         ];
         $this->load->view('admin/layout/all', $data);
     }
@@ -32,9 +32,9 @@ class RoomType extends CI_Controller
     {
         $data = [
             'type' => $this->input->post('type'),
-            'deskripsi' => $this->input->post('deskripsi'),
+            'type_desc' => $this->input->post('type_desc'),
         ];
-        $this->m_RoomType->insert_data($data);
+        $this->m_room_type->insert_data($data);
         redirect('RoomType');
     }
 
@@ -43,7 +43,7 @@ class RoomType extends CI_Controller
         $data = [
             'judul' => "Edit Tipe Ruangan",
             'isi' => 'admin/room_type/v_edit',
-            'kamar_id' => $this->m_RoomType->get_data_by_id($id)
+            'kamar_id' => $this->m_room_type->get_data_by_id($id)
         ];
         $this->load->view('admin/layout/all', $data);
     }
@@ -52,15 +52,15 @@ class RoomType extends CI_Controller
     {
         $data = [
             'type' => $this->input->post('type'),
-            'deskripsi' => $this->input->post('deskripsi'),
+            'type_desc' => $this->input->post('type_desc'),
         ];
-        $this->m_RoomType->update_data($id, $data);
+        $this->m_room_type->update_data($id, $data);
         redirect('RoomType');
     }
 
     public function delete($id)
     {
-        $this->m_RoomType->delete_data($id);
+        $this->m_room_type->delete_data($id);
         redirect('RoomType');
     }
 }
