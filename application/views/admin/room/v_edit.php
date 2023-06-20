@@ -27,7 +27,7 @@
                     <label class="col-sm-2 col-form-label">Tipe Kamar</label>
                     <div class="col-sm-12">
                         <select name="id_type" class="form-select" aria-label="Default select example">
-                            <option selected><?= $kamar_id['type'] ?></option>
+                            <option selected value="<?= $kamar_id['id_type'] ?>"><?= $kamar_id['type'] ?></option>
                             <?php foreach ($type as $key => $tipe) { ?>
                                 <option value="<?= $tipe['id_type'] ?>"><?= $tipe['type'] ?></option>
                             <?php } ?>
