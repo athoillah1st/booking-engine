@@ -4,17 +4,17 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
         <li class="nav-item">
-            <a class="nav-link " href="<?= base_url() ?>">
+            <a class="nav-link <?= $this->uri->segment(1) == "" ? "" : "collapsed" ?>" href="<?= base_url() ?>">
                 <i class="bi bi-grid"></i>
                 <span>Dashboard</span>
             </a>
         </li><!-- End Dashboard Nav -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+            <a class="nav-link <?= $this->uri->segment(1) == ("Room" || "RoomType") ? "" : "collapsed" ?>" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
                 <i class="bi bi-menu-button-wide"></i><span>DATA ROOM</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
-            <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+            <ul id="components-nav" class="nav-content <?= $this->uri->segment(1) == ("Room" || "RoomType") ? "" : "collapse" ?>" data-bs-parent="#sidebar-nav">
                 <li>
                     <a href="<?= base_url('Room') ?>">
                         <i class="bi bi-circle"></i><span>ROOM</span>
@@ -30,18 +30,23 @@
         </li><!-- End Components Nav -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+            <a class="nav-link <?= $this->uri->segment(1) == ("book" || "cek_out") ? "" : "collapsed" ?>" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
                 <i class="bi bi-journal-text"></i><span>Data Booking</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
-            <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+            <ul id="forms-nav" class="nav-content <?= $this->uri->segment(1) == ("book" || "cek_out") ? "" : "collapse" ?> " data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="<?= base_url('book') ?>">
+                    <a href="<?= base_url('book/data') ?>">
                         <i class="bi bi-circle"></i><span>Booking</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="<?= base_url('book') ?>">
                         <i class="bi bi-circle"></i><span>Cek In</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="<?= base_url('book/cek_out') ?>">
+                        <i class="bi bi-circle"></i><span>Cek Out</span>
                     </a>
                 </li>
 

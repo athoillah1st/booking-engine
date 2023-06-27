@@ -12,6 +12,15 @@ class Book extends CI_Controller
         ];
         $this->load->view('admin/layout/all', $data);
     }
+    public function data()
+    {
+        $data = [
+            'judul' => "Halaman Booking",
+            'isi' => 'admin/book/v_list',
+            'book' => $this->m_book->get_allData(),
+        ];
+        $this->load->view('admin/layout/all', $data);
+    }
 
     public function tambah($id)
     {
@@ -36,6 +45,8 @@ class Book extends CI_Controller
             'id_room' => $this->input->post('id_room'),
             'cek_in' => $this->input->post('cek_in'),
             'cek_out' => $this->input->post('cek_out'),
+            'nama_customer' => $this->input->post('nama_customer'),
+            'jumlah_orang' => $this->input->post('jumlah_orang'),
             'harga_total' => $harga_tot,
         ];
         $this->m_book->insert_data($data);
@@ -48,5 +59,26 @@ class Book extends CI_Controller
         $this->m_room->update_data($id, $data2);
 
         redirect('book');
+    }
+
+    public function cek_out()
+    {
+        $data = [
+            'judul' => "Halaman Cek Out",
+            'isi' => 'admin/book/v_cek_out',
+            'kamar' => $this->m_room->get_allData(),
+        ];
+        $this->load->view('admin/layout/all', $data);
+    }
+
+    public function proses_cek_out($id)
+    {
+        $data = [
+            'cek_in' => 0,
+            'cek_out' => 0,
+            'status' => 0,
+        ];
+        $this->m_room->update_data($id, $data);
+        redirect('book/cek_out');
     }
 }
